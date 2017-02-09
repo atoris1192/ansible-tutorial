@@ -1,0 +1,4 @@
+---
+- name: be sure ntpd id running and enabled
+  service: name=ntpd state=started enabled=yes
+  tags: ntpd

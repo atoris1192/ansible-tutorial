@@ -1,0 +1,24 @@
+---
+- name: be sure mysql-server is installded
+  yum: name={{item}} state=installed
+  with_item:
+    - mysql-server
+    - MySQL-python
+  tags: mysqld
+
+- name: be sure mysqld is running and enabled
+  service: name=mysqld state=started enabled=yes
+  tags: mysqld
+
+- name: Create database
+  mysql_db={{dbname}} state=present cncoding=utf8
+  tags: mysqld
+
+- name: Create database user
+  mysql_user: >
+    name={{dbuser}}
+    password="{{dbapssword}}"
+    priv={{dbname}}.*:ALL
+    state=present
+  tags: mysqld
+
