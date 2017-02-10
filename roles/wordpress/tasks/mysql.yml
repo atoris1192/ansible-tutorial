@@ -11,7 +11,7 @@
   tags: mysqld
 
 - name: Create database
-  mysql_db: db={{dbname}} state=present cncoding=utf8
+  mysql_db: db={{dbname}} state=present encoding=utf8
   tags: mysqld
 
 - name: Create database user
