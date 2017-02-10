@@ -12,8 +12,6 @@
 
 - name: Create database
   mysql_db: db={{dbname}} state=present encoding=utf8
-  with_items:
-    - wordpress
   tags: mysqld
 
 - name: Create database user
@@ -22,10 +20,5 @@
     password="{{dbpassword}}"
     priv={{dbname}}.*:ALL
     state=present
-  with_items:
-    - dbuser
-      wordpress
-    - dbpassword
-      wordpress
   tags: mysqld
 
