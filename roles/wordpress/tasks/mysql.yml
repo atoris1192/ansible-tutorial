@@ -1,7 +1,7 @@
 ---
 - name: be sure mysql-server is installded
   yum: name={{item}} state=installed
-  with_item:
+  with_items:
     - mysql-server
     - MySQL-python
   tags: mysqld
@@ -11,7 +11,7 @@
   tags: mysqld
 
 - name: Create database
-  mysql_db={{dbname}} state=present cncoding=utf8
+  mysql_db: db={{dbname}} state=present cncoding=utf8
   tags: mysqld
 
 - name: Create database user
